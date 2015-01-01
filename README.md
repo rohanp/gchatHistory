@@ -2,7 +2,7 @@ gchatHistory
 ============
 Download your google chat history!
 
-How to:
+###How to:
 1. Go to script.google.com and create a new project
 2. Copy/paste the code from getChatHistory.gs into the file
 3. Change the variable person to whomever you want to get your chat history with

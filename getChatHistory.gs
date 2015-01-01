@@ -1,5 +1,5 @@
 function main() {
-  var person="mustuni1";
+  var person="PersonsName";
   var startTime= (new Date()).getTime();
   var numThreads = 3000  
   var doc = DocumentApp.openById(ScriptProperties.getProperty("Id"));

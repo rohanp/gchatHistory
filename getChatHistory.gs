@@ -1,5 +1,17 @@
+function setup() {
+  var len=GmailApp.getChatThreads(0,1)[0].getMessages().length
+  var doc=DocumentApp.create('0:0/'+len);
+  var currTime=(new Date()).getTime();
+  ScriptProperties.setProperty("Id",doc.getId());
+
+  ScriptApp.newTrigger("main")
+               .timeBased()
+               .everyMinutes(10)
+               .create();
+}
+
 function main() {
-  var person="PersonsName";
+  var person="Ellis Tsung";
   var startTime= (new Date()).getTime();
   var numThreads = 3000  
   var doc = DocumentApp.openById(ScriptProperties.getProperty("Id"));
@@ -10,9 +22,9 @@ function main() {
   for(var i = startRow; i <= numThreads; i++) {
     var currTime = (new Date()).getTime();
     if(currTime - startTime >= 330000) {
-        break;
+          break;
       } else {
-        if(!writeThread(i, doc, doc.getName(), startMsg, startTime, person)){
+        if(!writeThread(i, doc, doc.getName(), startMsg, startTime, person)){;
           break;
         } else{
           startMsg=0;
@@ -101,3 +113,6 @@ function main() {
     return parseInt(s.substring(start));
   }
 }
+
+
+

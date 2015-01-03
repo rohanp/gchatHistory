@@ -1,17 +1,5 @@
-function setup() {
-  var len=GmailApp.getChatThreads(0,1)[0].getMessages().length
-  var doc=DocumentApp.create('0:0/'+len);
-  var currTime=(new Date()).getTime();
-  ScriptProperties.setProperty("Id",doc.getId());
-
-  ScriptApp.newTrigger("main")
-               .timeBased()
-               .everyMinutes(10)
-               .create();
-}
-
 function main() {
-  var person="Ellis Tsung";
+  var person="mustuni1";
   var startTime= (new Date()).getTime();
   var numThreads = 3000  
   var doc = DocumentApp.openById(ScriptProperties.getProperty("Id"));
@@ -88,6 +76,9 @@ function main() {
     
     messageIndex = s.search("7bit") + 4;
     message = s.substring(messageIndex).replace('&#39;',"\'");
+    message = s.replace("<br>","\n");
+    message = s.replace("<a href=\"","");
+    message = s.replace("</a>","");
     
     if(me){
       return "me: " + message.trim();
